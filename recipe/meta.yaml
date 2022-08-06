@@ -11,15 +11,17 @@ source:
 
 build:
   number: 0
-  noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
+  skip: True  # [py<36]
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - setuptools
+    - wheel
+    - python
   run:
-    - python >=3.6
+    - python
 
 test:
   imports:
