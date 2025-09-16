@@ -1,24 +1,23 @@
 {% set name = "uc-micro-py" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.3" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: b7cdf4ea79433043ddfe2c82210208f26f7962c0cfbe3bacb05ee879a7fdb596
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: d321b92cff673ec58027c04015fcaa8bb1e005478643ff4a500882eaab88c48a
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
-  skip: True  # [py<36]
+  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<37]
 
 requirements:
   host:
     - pip
     - setuptools
-    - wheel
     - python
   run:
     - python
@@ -35,11 +34,11 @@ test:
     - uc_micro.properties.Any
 
 about:
-  home: "https://github.com/tsutsu3/uc.micro-py"
+  home: https://github.com/tsutsu3/uc.micro-py
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: "Micro subset of unicode data files for linkify-it-py projects."
+  summary: Micro subset of unicode data files for linkify-it-py projects.
 
 extra:
   recipe-maintainers:
